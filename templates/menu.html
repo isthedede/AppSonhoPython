@@ -25,23 +25,38 @@
         </div>
     </div>
     <script>
-        const btn = document.getElementById('toggle-theme');
-        btn.addEventListener('click', function() {
-            if (document.body.classList.contains('bg-dark')) {
-                document.body.classList.remove('bg-dark', 'text-light');
-                document.body.classList.add('bg-light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.body.classList.remove('bg-light');
-                document.body.classList.add('bg-dark', 'text-light');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-        // Carregar tema salvo
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('bg-dark', 'text-light');
-            document.body.classList.remove('bg-light');
+    const btn = document.getElementById('toggle-theme');
+
+    function aplicarTemaEscuro() {
+        document.body.classList.add('bg-dark', 'text-light');
+        document.body.classList.remove('bg-light');
+        btn.classList.remove('btn-outline-dark');
+        btn.classList.add('btn-outline-light');
+        localStorage.setItem('theme', 'dark');
+    }
+
+    function aplicarTemaClaro() {
+        document.body.classList.remove('bg-dark', 'text-light');
+        document.body.classList.add('bg-light');
+        btn.classList.remove('btn-outline-light');
+        btn.classList.add('btn-outline-dark');
+        localStorage.setItem('theme', 'light');
+    }
+
+    btn.addEventListener('click', function() {
+        if (document.body.classList.contains('bg-dark')) {
+            aplicarTemaClaro();
+        } else {
+            aplicarTemaEscuro();
         }
-    </script>
+    });
+
+    // Carregar tema salvo ao iniciar
+    if (localStorage.getItem('theme') === 'dark') {
+        aplicarTemaEscuro();
+    } else {
+        aplicarTemaClaro(); 
+    }
+</script>
 </body>
 </html> 
