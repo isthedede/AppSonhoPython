@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Sonhos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row mb-4">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <h1 class="mb-0">Menu Principal</h1>
+                <button id="toggle-theme" class="btn btn-outline-dark">Alternar Tema</button>
+            </div>
+        </div>
+        <div class="list-group">
+            <a href="/sonhos" class="list-group-item list-group-item-action">Meus Sonhos</a>
+            <a href="/categorias" class="list-group-item list-group-item-action">Categorias</a>
+            <a href="/exportar" class="list-group-item list-group-item-action">Exportar Dados</a>
+            <a href="/importar" class="list-group-item list-group-item-action">Importar Dados</a>
+            <a href="/importados" class="list-group-item list-group-item-action">Ver Dados Importados</a>
+            <a href="/sobre" class="list-group-item list-group-item-action">Sobre</a>
+            <a href="/logout" class="list-group-item list-group-item-action text-danger">Sair</a>
+        </div>
+    </div>
+    <script>
+        const btn = document.getElementById('toggle-theme');
+        btn.addEventListener('click', function() {
+            if (document.body.classList.contains('bg-dark')) {
+                document.body.classList.remove('bg-dark', 'text-light');
+                document.body.classList.add('bg-light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.remove('bg-light');
+                document.body.classList.add('bg-dark', 'text-light');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        // Carregar tema salvo
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('bg-dark', 'text-light');
+            document.body.classList.remove('bg-light');
+        }
+    </script>
+</body>
+</html> 

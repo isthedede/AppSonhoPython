@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Importados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Dados Importados</h1>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Conteúdo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for imp in importacoes %}
+                <tr>
+                    <td>{{ imp.id }}</td>
+                    <td><pre style="background:#f8f9fa; border:1px solid #ccc; padding:1em; max-width:600px; max-height:300px; overflow:auto;">{{ imp.conteudo }}</pre></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/menu" class="btn btn-secondary mt-3">Voltar ao Menu</a>
+    </div>
+    <script>
+        // Carregar tema salvo
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('bg-dark', 'text-light');
+            document.body.classList.remove('bg-light');
+        }
+        // Alternância de tema
+        const btn = document.getElementById('toggle-theme');
+        btn.addEventListener('click', function() {
+            if (document.body.classList.contains('bg-dark')) {
+                document.body.classList.remove('bg-dark', 'text-light');
+                document.body.classList.add('bg-light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.remove('bg-light');
+                document.body.classList.add('bg-dark', 'text-light');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html> 

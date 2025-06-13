@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importar Dados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Importar Dados</h1>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="url" class="form-label">URL do arquivo ZIP</label>
+                <input type="url" class="form-control" id="url" name="url" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Importar</button>
+            <a href="/menu" class="btn btn-secondary">Cancelar</a>
+        </form>
+        {% if dados %}
+        <div class="mt-4">
+            <h3>Dados Importados</h3>
+            <pre style="background:#f8f9fa; border:1px solid #ccc; padding:1em;">{{ dados | tojson(indent=2, ensure_ascii=False) }}</pre>
+        </div>
+        {% endif %}
+        {% if resumo %}
+        <div class="alert alert-success mt-4">
+            <strong>Resumo da importação:</strong><br>
+            Usuários importados: {{ resumo.usuarios }}<br>
+            Categorias importadas: {{ resumo.categorias }}<br>
+            Sonhos importados: {{ resumo.sonhos }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html> 

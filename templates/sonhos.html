@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Sonhos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Meus Sonhos</h1>
+        <a href="/sonhos/adicionar" class="btn btn-primary mb-3">Adicionar Sonho</a>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sonho in sonhos %}
+                <tr>
+                    <td>{{ sonho.titulo }}</td>
+                    <td>{{ sonho.descricao }}</td>
+                    <td>{{ sonho.data }}</td>
+                    <td>{{ sonho.status }}</td>
+                    <td>{{ sonho.categoria.nome if sonho.categoria else '' }}</td>
+                    <td>
+                        <a href="/sonhos/editar/{{ sonho.id }}" class="btn btn-sm btn-warning">Editar</a>
+                        <form action="/sonhos/deletar/{{ sonho.id }}" method="POST" style="display:inline-block;">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/menu" class="btn btn-secondary mt-3">Voltar ao Menu</a>
+    </div>
+</body>
+</html> 

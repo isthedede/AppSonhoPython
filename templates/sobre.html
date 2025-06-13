@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Sonhos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Sobre o Projeto</h1>
+        <p><strong>Tema:</strong> Lista de Metas - "Sonhos"</p>
+        <p><strong>Objetivo:</strong> Permitir que usuários cadastrem, acompanhem e gerenciem seus sonhos/metas de vida, categorizando e monitorando o progresso.</p>
+        <h2>Desenvolvedores</h2>
+        <ul>
+            <li>André Luiz Toyama Zanello 284.048.231.103.5</li>
+            <li>Murilo Otaviano Berti 284.048.231.104.1</li>
+        </ul>
+        <a href="/menu" class="btn btn-secondary mt-3">Voltar ao Menu</a>
+    </div>
+    <script>
+        // Carregar tema salvo
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('bg-dark', 'text-light');
+            document.body.classList.remove('bg-light');
+        }
+        // Alternância de tema
+        const btn = document.getElementById('toggle-theme');
+        btn.addEventListener('click', function() {
+            if (document.body.classList.contains('bg-dark')) {
+                document.body.classList.remove('bg-dark', 'text-light');
+                document.body.classList.add('bg-light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.remove('bg-light');
+                document.body.classList.add('bg-dark', 'text-light');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html> 
