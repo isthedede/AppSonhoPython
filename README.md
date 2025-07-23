@@ -17,9 +17,7 @@ O sistema "Sonhos" é uma aplicação web em Python (Flask) para cadastro, acomp
 
 ## Alunos
 - **André Luiz Toyama Zanello**  
-  RA: 284.048.231.103.5
 - **Murilo Otaviano Berti**  
-  RA: 284.048.231.104.1
 
 ## Como rodar
 
